@@ -1,5 +1,7 @@
 # Multilayer Perceptron to Predict International Airline Passengers (t+1, given t)
 import numpy
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas
 from keras.models import Sequential
@@ -68,5 +70,7 @@ plt.title('mlp_single loss')
 plt.ylabel('Passanger in 1000')
 plt.xlabel('time')
 plt.legend(['loss', 'val loss'], loc='lower right')
-plt.savefig("First_loss.png", bbox_inches='tight')
-plt.show()
+fig = plt.figure()
+plt.plot(range(10))
+fig.savefig("First_loss.png", bbox_inches='tight')
+#plt.show()
