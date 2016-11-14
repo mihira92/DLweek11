@@ -1,5 +1,7 @@
 # Multilayer Perceptron to Predict International Airline Passengers (t+1, given t, t-1, t-2)
 import numpy
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas
 from keras.models import Sequential
@@ -57,14 +59,14 @@ plt.title('mlp_window Predictions')
 plt.ylabel('Passanger in 1000')
 plt.xlabel('time')
 plt.legend(['dataset', 'train', 'test'], loc='lower right')
-plt.savefig("First_acc.png", bbox_inches='tight')
+plt.savefig("First_window_acc.png", bbox_inches='tight')
 
 # summarize history for loss
 plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
+#plt.plot(history.history['val_loss'])
 plt.title('mlp_window loss')
 plt.ylabel('Passanger in 1000')
 plt.xlabel('time')
-plt.legend(['loss', 'val loss'], loc='lower right')
-plt.savefig("First_loss.png", bbox_inches='tight')
+plt.legend(['loss'], loc='lower right')
+plt.savefig("First_window_loss.png", bbox_inches='tight')
 plt.show()
