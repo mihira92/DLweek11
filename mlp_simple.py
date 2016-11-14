@@ -32,7 +32,9 @@ model = Sequential()
 model.add(Dense(8, input_dim=look_back, activation='relu'))
 model.add(Dense(1))
 model.compile(loss='mean_squared_error', optimizer='adam')
-model.fit(trainX, trainY, nb_epoch=200, batch_size=2, verbose=2)
+
+print 'fitting model'
+history = model.fit(trainX, trainY, nb_epoch=200, batch_size=2, verbose=2)
 # Estimate model performance
 trainScore = model.evaluate(trainX, trainY, verbose=0)
 print('Train Score: ', trainScore)
@@ -53,5 +55,18 @@ testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredi
 plt.plot(dataset)
 plt.plot(trainPredictPlot)
 plt.plot(testPredictPlot)
-plt.show()
+plt.title('mlp_single Predictions')
+plt.ylabel('Passanger in 1000')
+plt.xlabel('time')
+plt.legend(['dataset', 'train', 'test'], loc='lower right')
+plt.savefig("First_acc.png", bbox_inches='tight')
 
+# summarize history for loss
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('mlp_single loss')
+plt.ylabel('Passanger in 1000')
+plt.xlabel('time')
+plt.legend(['loss', 'val loss'], loc='lower right')
+plt.savefig("First_loss.png", bbox_inches='tight')
+plt.show()
